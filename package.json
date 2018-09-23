@@ -1,6 +1,6 @@
 {
   "name": "meanstackjs_mongo-express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MeanStackJS integration with mongo-express",
   "main": "index.js",
   "author": "Green Pioneer <info@greenpioneersolutions.com>",

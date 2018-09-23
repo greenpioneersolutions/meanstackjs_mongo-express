@@ -122,9 +122,7 @@ function MongoExpress (self, done) {
     //     "city":"name"
     //   }
     // }
-    defaultKeyNames: {
-
-    }
+    defaultKeyNames: process.env.DEFAULT_KEY_NAMES,
   }
   self.appMongoExpress = express()
   self.appMongoExpress.set('port', self.settings.port.mongoexpress)

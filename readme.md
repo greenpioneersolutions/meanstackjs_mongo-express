@@ -24,9 +24,59 @@ This is a tool for the [meanstackjs](http://meanstackjs.com/). It uses [mongo-ex
 npm install meanstackjs_mongo-express --save
 # YARN
 yarn add meanstackjs_mongo-express
-# USAGE
+```
+
+## Usage
+
+``` js
+// USAGE
 function tool (self) {
   require('meanstackjs_mongo-express')(self)
+}
+```
+
+## Settings
+
+``` js
+const mongoexpress = {
+  mongodb: {
+    server: process.env.MONGODB_SERVER || mongodbUri.hosts[0].host,
+    port: process.env.MONGODB_PORT || mongodbUri.hosts[0].port || 27017,
+    useSSL: process.env.MONGODB_SSL || false,
+    poolSize: self.settings.mongodb.size || 1,
+    admin: process.env.MONGODB_ENABLE_ADMIN ? process.env.MONGODB_ENABLE_ADMIN.toLowerCase() === 'true' : false,
+    auth: [
+      {
+        database: process.env.MONGODB_AUTH_DATABASE || mongodbUri.database,
+        username: process.env.MONGODB_AUTH_USERNAME || mongodbUri.username,
+        password: process.env.MONGODB_AUTH_PASSWORD || mongodbUri.password
+      }
+    ],
+    adminUsername: process.env.MONGODB_ADMINUSERNAME || '',
+    adminPassword: process.env.MONGODB_ADMINPASSWORD || ''
+  },
+
+  site: {
+    baseUrl: process.env.SITE_BASEURL || '/',
+    cookieKeyName: 'mongo-express',
+    cookieSecret: process.env.SITE_COOKIESECRET || 'cookiesecret',
+    host: process.env.VCAP_APP_HOST || 'localhost',
+    port: process.env.VCAP_APP_PORT || 8081,
+    requestSizeLimit: process.env.REQUEST_SIZE || '50mb',
+    sessionSecret: process.env.SITE_SESSIONSECRET || 'sessionsecret',
+    sslCert: process.env.SITE_SSL_CRT_PATH || '',
+    sslEnabled: process.env.SITE_SSL_ENABLED || false,
+    sslKey: process.env.SITE_SSL_KEY_PATH || ''
+  },
+  useBasicAuth: process.env.BASICAUTH_USERNAME !== '',
+  basicAuth: {
+    username: process.env.BASICAUTH_USERNAME || 'admin',
+    password: process.env.BASICAUTH_PASSWORD || 'pass'
+  },
+  options: {
+    editorTheme: process.env.OPTIONS_EDITORTHEME || 'rubyblue'
+  },
+  defaultKeyNames: process.env.DEFAULT_KEY_NAMES,
 }
 ```
 
